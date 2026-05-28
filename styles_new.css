@@ -1,0 +1,655 @@
+/* ============================================
+   ESTILOS BASE
+   ============================================ */
+
+:root {
+    --gold: #D4AF37;
+    --dark: #0a0505;
+    --white: #FFFFFF;
+    --light-gray: #f5f5f5;
+    --text: #e0e0e0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ============================================
+   GALAXIA - FONDO COMPLETO
+   ============================================ */
+
+.galaxy-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* Estrellas */
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.stars::before,
+.stars::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(1px 1px at 20px 30px, #eee, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 60px 70px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 50px 50px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 130px 80px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 90px 10px, #eee, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* Nebulosas */
+.nebula {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    mix-blend-mode: screen;
+}
+
+.nebula-1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, transparent 70%);
+    top: 10%;
+    left: 10%;
+    animation: float 8s ease-in-out infinite;
+}
+
+.nebula-2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(138, 43, 226, 0.3) 0%, transparent 70%);
+    top: 50%;
+    right: 10%;
+    animation: float 10s ease-in-out infinite;
+    animation-delay: 2s;
+}
+
+.nebula-3 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(75, 0, 130, 0.2) 0%, transparent 70%);
+    bottom: 10%;
+    left: 50%;
+    animation: float 12s ease-in-out infinite;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(50px, 50px); }
+}
+
+/* Polvo cósmico */
+.cosmic-dust {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(ellipse at 20% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 40% 50%, rgba(75, 0, 130, 0.08) 0%, transparent 50%);
+    animation: dust-move 20s ease-in-out infinite;
+}
+
+@keyframes dust-move {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* ============================================
+   CONTENEDOR
+   ============================================ */
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 30px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.header-section {
+    text-align: center;
+    padding: 80px 0 60px;
+    animation: fadeIn 1.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.main-title {
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--gold);
+    letter-spacing: 8px;
+    margin-bottom: 15px;
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.6),
+                 0 0 60px rgba(212, 175, 55, 0.3);
+    animation: title-cosmic 4s ease-in-out infinite;
+}
+
+@keyframes title-cosmic {
+    0%, 100% { 
+        text-shadow: 0 0 30px rgba(212, 175, 55, 0.6),
+                     0 0 60px rgba(212, 175, 55, 0.3);
+        transform: scale(1);
+    }
+    50% { 
+        text-shadow: 0 0 50px rgba(212, 175, 55, 0.8),
+                     0 0 100px rgba(212, 175, 55, 0.5);
+        transform: scale(1.02);
+    }
+}
+
+.subtitle-text {
+    font-size: 1.2rem;
+    color: rgba(212, 175, 55, 0.8);
+    letter-spacing: 3px;
+    font-weight: 300;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   CORAZÓN CENTRAL
+   ============================================ */
+
+.heart-center {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 60px auto;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.heart-svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.8));
+    animation: heartbeat-cosmic 1.5s ease-in-out infinite;
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes heartbeat-cosmic {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.15); }
+    50% { transform: scale(1); }
+}
+
+.heart-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, transparent 70%);
+    animation: pulse-heart 2s ease-in-out infinite;
+}
+
+@keyframes pulse-heart {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+    50% { transform: translate(-50%, -50%) scale(1.5); opacity: 1; }
+}
+
+.heart-orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 350px;
+    border: 2px solid rgba(212, 175, 55, 0.2);
+    border-radius: 50%;
+    animation: rotate-orbit 8s linear infinite;
+}
+
+@keyframes rotate-orbit {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ============================================
+   MENSAJE
+   ============================================ */
+
+.message-section {
+    margin: 80px 0;
+    padding: 60px 0;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+.quote-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.quote-text {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+.quote-text.main-quote {
+    font-size: 1.3rem;
+    margin-top: 30px;
+    font-weight: 400;
+}
+
+.highlight {
+    color: var(--gold);
+    font-weight: 600;
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+}
+
+/* ============================================
+   FRASES TÉCNICAS
+   ============================================ */
+
+.tech-quotes {
+    margin-top: 50px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.tech-quote {
+    font-size: 1rem;
+    color: #d0d0d0;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    padding-left: 30px;
+    position: relative;
+    animation: fadeInLeft 0.6s ease-out forwards;
+    transition: all 0.3s ease;
+}
+
+.tech-quote:hover {
+    color: var(--gold);
+    padding-left: 40px;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+}
+
+.tech-quote:nth-child(1) { animation-delay: 0.2s; }
+.tech-quote:nth-child(2) { animation-delay: 0.4s; }
+.tech-quote:nth-child(3) { animation-delay: 0.6s; }
+.tech-quote:nth-child(4) { animation-delay: 0.8s; }
+
+@keyframes fadeInLeft {
+    from { 
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.quote-icon {
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: bold;
+    animation: bounce 1.5s ease-in-out infinite;
+}
+
+.tech-quote:nth-child(1) .quote-icon { animation-delay: 0s; }
+.tech-quote:nth-child(2) .quote-icon { animation-delay: 0.2s; }
+.tech-quote:nth-child(3) .quote-icon { animation-delay: 0.4s; }
+.tech-quote:nth-child(4) .quote-icon { animation-delay: 0.6s; }
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(10px); }
+}
+
+/* ============================================
+   GALERÍA
+   ============================================ */
+
+.gallery-section {
+    margin: 100px 0;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: var(--gold);
+    text-align: center;
+    margin: 30px 0;
+    letter-spacing: 2px;
+    font-weight: 400;
+    animation: fadeInUp 0.8s ease-out;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    margin: 40px 0;
+}
+
+.photo-card {
+    animation: fadeInUp 0.8s ease-out;
+    transition: transform 0.4s ease;
+}
+
+.photo-card:nth-child(1) { animation-delay: 0.2s; }
+.photo-card:nth-child(2) { animation-delay: 0.4s; }
+.photo-card:nth-child(3) { animation-delay: 0.6s; }
+
+.photo-card:hover {
+    transform: translateY(-15px);
+}
+
+.photo-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background: var(--light-gray);
+    aspect-ratio: 1 / 1;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(212, 175, 55, 0.3);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+}
+
+.photo-card:hover .photo-container {
+    box-shadow: 0 20px 60px rgba(212, 175, 55, 0.4),
+                0 0 50px rgba(212, 175, 55, 0.5);
+    border-color: rgba(212, 175, 55, 0.7);
+}
+
+.photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.photo-card:hover .photo-container img {
+    transform: scale(1.08);
+}
+
+.photo-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.8));
+    color: var(--gold);
+    padding: 30px 20px 20px;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.photo-card:hover .photo-caption {
+    opacity: 1;
+}
+
+.heart-decoration {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.8rem;
+    opacity: 0;
+    animation: heart-pop 0.6s ease-out forwards;
+}
+
+.photo-card:hover .heart-decoration {
+    opacity: 1;
+}
+
+@keyframes heart-pop {
+    0% { 
+        opacity: 0;
+        transform: scale(0) rotate(-180deg);
+    }
+    50% { 
+        transform: scale(1.2);
+    }
+    100% { 
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* ============================================
+   CELEBRACIÓN
+   ============================================ */
+
+.celebration-section {
+    margin: 100px 0;
+    text-align: center;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.celebration-content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    background: rgba(212, 175, 55, 0.08);
+    border-left: 3px solid var(--gold);
+    border-right: 3px solid var(--gold);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+}
+
+.main-text {
+    font-size: 1.15rem;
+    color: #e0e0e0;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.year-display {
+    position: relative;
+    margin: 40px 0;
+}
+
+.year-number {
+    font-size: 6rem;
+    color: var(--gold);
+    font-weight: 300;
+    display: inline-block;
+    text-shadow: 0 0 40px rgba(212, 175, 55, 0.6),
+                 0 0 80px rgba(212, 175, 55, 0.3);
+    animation: rotate-cosmic 4s ease-in-out infinite;
+}
+
+@keyframes rotate-cosmic {
+    0%, 100% { transform: rotateY(0deg); }
+    50% { transform: rotateY(10deg); }
+}
+
+.year-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse-year 2s ease-in-out infinite;
+}
+
+@keyframes pulse-year {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.3); }
+}
+
+.secondary-text {
+    font-size: 1.1rem;
+    color: #c0c0c0;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.footer-section {
+    text-align: center;
+    padding: 60px 0;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    margin-top: 80px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.footer-text {
+    font-size: 1.1rem;
+    color: #c0c0c0;
+    margin-bottom: 15px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+.author {
+    font-size: 1.3rem;
+    color: var(--gold);
+    font-weight: 400;
+    letter-spacing: 2px;
+    animation: pulse-text 2s ease-in-out infinite;
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+@keyframes pulse-text {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* ============================================
+   CORAZONES FLOTANTES
+   ============================================ */
+
+.floating-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ============================================
+   RESPONSIVO
+   ============================================ */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 20px;
+    }
+
+    .main-title {
+        font-size: 2.5rem;
+    }
+
+    .quote-text {
+        font-size: 1rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .celebration-content {
+        padding: 40px 20px;
+    }
+
+    .year-number {
+        font-size: 3.5rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-section {
+        padding: 40px 0 30px;
+    }
+
+    .main-title {
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+    }
+
+    .subtitle-text {
+        font-size: 0.95rem;
+    }
+
+    .quote-text {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .year-number {
+        font-size: 2.5rem;
+    }
+
+    .tech-quote {
+        font-size: 0.9rem;
+    }
+}
